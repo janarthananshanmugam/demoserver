@@ -10,6 +10,7 @@ async function getleads(req, res) {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
+    console.log("connected");
     const db = client.db(dbName);
     const result = await db.collection("leads").find().toArray();
     res.send(result);
