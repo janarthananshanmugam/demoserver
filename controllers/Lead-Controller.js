@@ -1,35 +1,48 @@
-const { MongoClient } = require('mongodb');
-const url = "mongodb://localhost:27017";
+const { MongoClient } = require("mongodb");
+const url =
+  "mongodb+srv://janarthanan:AYCBX8TdhKKYTQfY@janarthanan.0gezghr.mongodb.net";
+const dbName = "digger";
 
 async function getleads(req, res) {
-    const dbo = await MongoClient.connect(url)
-    const db = dbo.db("kTools");
-    try {
-        const result = await db.collection("leads").find().toArray();
-        res.send(result)
-        console.log(result);
+  let client;
+  try {
+    client = await MongoClient.connect(url, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    const db = client.db(dbName);
+    const result = await db.collection("leads").find().toArray();
+    res.send(result);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal Server Error");
+  } finally {
+    if (client) {
+      await client.close();
     }
-    catch (err) {
-        console.log(err);
-    }
-    finally {
-        dbo.close();
-    }
+  }
 }
+
 async function postleads(req, res) {
-    const dbo = await MongoClient.connect(url)
-    const db = dbo.db("kTools");
-    try {
-        var neworder = req.body;
-        const result = await db.collection("leads").insertMany(neworder)
-        res.send(result)
-        console.log(result);
+  let client;
+  try {
+    client = await MongoClient.connect(url, {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    });
+    const db = client.db(dbName);
+    const neworder = req.body;
+    const result = await db.collection("leads").insertMany(neworder);
+    res.send(result);
+    console.log(result);
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Internal Server Error");
+  } finally {
+    if (client) {
+      await client.close();
     }
-    catch (err) {
-        console.log(err);
-    }
-    finally {
-        dbo.close();
-    }
+  }
 }
-module.exports = { getleads,postleads}
+
+module.exports = { getleads, postleads };
