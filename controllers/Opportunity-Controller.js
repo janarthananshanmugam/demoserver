@@ -5,11 +5,11 @@ const leadData = [
   },
   {
     id: 2,
-    name: "Jana2",
+    name: "Jana",
   },
   {
     id: 3,
-    name: "Jana3",
+    name: "Nila",
   },
 ];
 
