@@ -1,7 +1,7 @@
 const leadData = [
   {
     id: 1,
-    name: "Jana1",
+    name: "Meena",
   },
   {
     id: 2,
