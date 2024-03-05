@@ -36,7 +36,11 @@ const sendEmail = (req, res) => {
     }
   });
 };
+const getEmail = (req, res) => {
+  res.status(200).json({ success: true });
+};
 
 module.exports = {
   sendEmail,
+  getEmail,
 };
