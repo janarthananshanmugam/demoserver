@@ -40,9 +40,9 @@ const sendEmail = (req, res) => {
 };
 const getEmail = async (req, res) => {
   const imapConfig = {
-    user: "janarthanan.shanmugam@kovaion.com",
-    password: "Jana012024",
-    host: "outlook.office365.com",
+    user: "janakovaion@gmail.com",
+    password: "fmvcncjhacikrsfv",
+    host: "imap.gmail.com",
     port: "993",
     tls: false,
   };
